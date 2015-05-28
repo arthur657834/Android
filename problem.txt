@@ -1,0 +1,7 @@
+Pro1:
+Rendering Problems The following classes could not be found:
+- android.support.v7.internal.widget.ActionBarOverlayLayout (Fix Build Path, Create Class)
+
+解决办法：
+修改styles文件里面的AppTheme
+Theme.AppCompat.Light.DarkActionBar改成Base.Theme.AppCompat.Light.DarkActionBar就行了
