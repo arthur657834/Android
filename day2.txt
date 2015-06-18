@@ -1,0 +1,78 @@
+Action bar:
+为 activity 显示标题，并且在标题左边显示一个 app icon。
+
+仅支持 Android 3.0 及以上版本:
+从 Android 3.0(API lever 11) 开始，所有使用 Theme.Holo 主题（或者它的子类）的activity 都包含了 action bar，当targetSdkVersion 或 minSdkVersion 属性被设置成 “11” 或更大时，它是默认主题。
+<uses-sdk android:minSdkVersion="11" ... />
+
+支持 Android 2.1 及以上版本
+如果要添加 action bar，需要加载 Android Support 库。
+MainActivity.java
+public class MainActivity extends ActionBarActivity { ... }
+
+mainfest:
+<manifest ... >
+<uses-sdk android:minSdkVersion="7" android:targetSdkVersion="18" />  Android版本支持
+
+添加atction bar
+在menu下的xml文件中添加:
+    <item android:id="@+id/action_search"
+          android:icon="@drawable/ic_action_search"
+          android:title="@string/action_search"
+          android:showAsAction="ifRoom" />   <=========>  app:showAsAction="ifRoom" />
+		  
+    <item android:id="@+id/action_settings"
+          android:title="@string/action_settings"
+          android:showAsAction="never" />
+		  
+这个属性可接受的值有：
+1、always：这个值会使菜单项一直显示在Action Bar上。
+2、ifRoom：如果有足够的空间，这个值会使菜单项显示在Action Bar上。
+3、never：这个值使菜单项永远都不出现在Action Bar上。
+4、withText：这个值使菜单项和它的图标，菜单文本一起显示。
+		  
+为 Action Bar 添加操作
+
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    // 为ActionBar扩展菜单项
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.main_activity_actions, menu);     main_activity_actions------>menu resource name
+    return super.onCreateOptionsMenu(menu);
+}
+
+可自定以下两个函数
+private void openSearch() {
+    Toast.makeText(this, "Search button pressed", Toast.LENGTH_SHORT).show();
+}
+
+private void openSettings() {
+    Toast.makeText(this, "Settings button pressed", Toast.LENGTH_SHORT).show();
+}
+	
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+    // 处理动作按钮的点击事件
+    switch (item.getItemId()) {
+        case R.id.action_search:
+            openSearch();
+            return true;
+        case R.id.action_settings:
+            openSettings();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+    }
+}
+
+为下级 Activity 添加向上按钮
+@Override
+public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_displaymessage);
+
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    // 如果你的minSdkVersion属性是11活更高, 应该这么用:
+    // getActionBar().setDisplayHomeAsUpEnabled(true);
+}
+

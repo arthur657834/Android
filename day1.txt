@@ -19,7 +19,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="horizontal">
-
+</LinearLayout>
 LinearLayout是ViewGroup的一个子类，用于放置水平或者垂直放置子视图的部件
 
 android:layout_width="match_parent"
@@ -42,6 +42,9 @@ android:hint
 当文本框为空的时候,会默认显示这个字符串。对于字符串 @string/edit_message 的值所引用的资源应该是定义在单独的文件里，而不是直接使用字符串。
 <string name="edit_message">Enter a message</string>  文件中定义
 
+android:layout_weight="1" 权重为1表示自动去占满剩余的空间
+android:layout_width="0"
+		
 ex2:按钮
 <Button
 android:layout_width="wrap_content"
