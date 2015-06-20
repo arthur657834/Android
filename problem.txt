@@ -5,3 +5,12 @@ Rendering Problems The following classes could not be found:
 解决办法：
 修改styles文件里面的AppTheme
 Theme.AppCompat.Light.DarkActionBar改成Base.Theme.AppCompat.Light.DarkActionBar就行了
+
+Pro2:
+android:actionBarStyle requires API level 11 (current min is 7) 
+添加两行:
+tools:targetApi="11" 
+
+<resources xmlns:tools="http://schemas.android.com/tools">  
+<item name="android:actionBarStyle" tools:targetApi="11" >@style/MyActionBar</item> 
+

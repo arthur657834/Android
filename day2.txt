@@ -71,8 +71,76 @@ public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_displaymessage);
 
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    getSupportActionBar().setDisplayHomeAsUpEnabled(true);----> 起作用的代码
     // 如果你的minSdkVersion属性是11或更高, 应该这么用:
     // getActionBar().setDisplayHomeAsUpEnabled(true);
 }
 
+注意：其实有些已经自带了的，不用加
+
+自定义背景
+为 activity 创建一个自定义主题，通过重写 actionBarStyle 属性来改变 action bar 的背景。actionBarStyle 属性指向另一个样式；在该样式里，通过指定一个 drawable 资源来重写 background 属性。
+
+style.xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+<!-- 应用于程序或者活动的主题 -->
+    <style name="CustomActionBarTheme" parent="@android:style/Theme.Holo.Light.DarkActionBar" tools:targetApi="14" >
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+    </style>
+    <!-- ActionBar 样式 -->
+    <style name="MyActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse" tools:targetApi="14" >
+        <item name="android:background">#FFFF00</item>
+    </style>
+</resources>
+
+修改activity.java中的 ActionBarActivity为Activity，但这个修改了会导致其他java代码中的功能不能实现,force close
+
+或者在activity中添加android:theme="@style/Theme.AppCompat" ，但这样背景修改的效果就没了
+
+查一下activity到底是个什么东西，或者现在是不是兼容3.0以上版本即可
+
+
+自定义文本颜色
+
+支持 Android 2.1 和更高 
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- 应用于程序或者活动的主题 -->
+<style name="CustomActionBarTheme"
+parent="@style/Theme.AppCompat">
+<item name="android:actionBarStyle">@style/MyActionBar</item>
+<item name="android:actionBarTabTextStyle">@style/MyActionBarTabText</item>
+<item name="android:actionMenuTextColor">@color/actionbar_text</item>
+<!-- 支持库兼容 -->
+<item name="actionBarStyle">@style/MyActionBar</item>
+<item name="actionBarTabTextStyle">@style/MyActionBarTabText</item>
+<item name="actionMenuTextColor">@color/actionbar_text</item>
+</style>
+<!-- ActionBar 样式 -->
+<style name="MyActionBar"
+parent="@style/Widget.AppCompat.ActionBar">
+<item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
+<!-- 支持库兼容 -->
+<item name="titleTextStyle">@style/MyActionBarTitleText</item>
+</style>
+<!-- ActionBar 标题文本 -->
+<style name="MyActionBarTitleText"
+parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+<item name="android:textColor">@color/actionbar_text</item>
+<!-- 文本颜色属性textColor是可以配合支持库向后兼容的 -->
+</style>
+<!-- ActionBar Tab标签文本样式 -->
+<style name="MyActionBarTabText"
+parent="@style/Widget.AppCompat.ActionBar.TabText">
+<item name="android:textColor">@color/actionbar_text</item>
+<!-- 文本颜色属性textColor是可以配合支持库向后兼容的 -->
+</style>
+</resources>
+
+新建\res\values\color.xml 
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="actionbar_text">#FF0000</color>                  #FF0000为红色 
+</resources>
