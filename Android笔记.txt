@@ -1,0 +1,47 @@
+ANR：Application Not Responding
+1.界面操作等待响应时间超过5s
+2.handlemessage 回调函数中执行超过10s
+
+Force close
+
+abd shell
+
+package一般存放在data下。日志文件一般在data/log
+log文件组成
+1.系统基本信息
+2.事件信息
+3.虚拟机信息 dalvik thread
+
+
+
+monkey -p packagename -v 1550
+
+Log.v("v","Verbose");
+Log.d("d","Debug");
+Log.i("i","Info");
+Log.w("w","Warn");
+Log.e("e","Error");
+
+android 5个进程等级
+
+1.foreground process
+	1.处于Activity resume()状态
+	2.处于与bound服务交互状态
+	3.处于服务在前台运行的状态(startForground()被调用)    前台放歌
+	4.Service 生命周期函数正在被执行(onCreat(),onStart(),onDestroy())
+	5.BroadcastReceiver 正在执行onReceive()
+	杀死foreground process需要用户响应-->所以安全等级高
+
+2.Visible Process
+Activity 不在前端显示，但并没有完全隐藏,例对话框
+一个bound到isible或者forground的Activity的service
+
+3.Service Process
+
+4.Background process
+
+5.Empty process
+没有components,缓存需要
+
+
+	
