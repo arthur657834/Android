@@ -12,8 +12,6 @@ log文件组成
 2.事件信息
 3.虚拟机信息 dalvik thread
 
-
-
 monkey -p packagename -v 1550
 
 读取类名
@@ -25,9 +23,28 @@ Log.i("i","Info");
 Log.w("w","Warn");
 Log.e("e","Error");
 
-proguard
+proguard:混淆代码
 
+Android启动过程：
 
+1.linux启动
+	bootloader
+	kernel
+	
+2.Android启动
+	/system/bin/servicemanager   ->servicemanager.java
+	Runtime
+	Zygote->app_process/App_main  ->app_main.cpp -> zygoteinit.java systemserver.java
+	start VM
+	System server
+	start android service->register to serviceManager
+	start launcher
+
+3.应用程序启动
+	running packagemanager
+
+	launcher 比 action_boot_completed 先启动
+	
 android 5个进程等级
 
 1.foreground process
@@ -69,7 +86,6 @@ anim：动画资源
 permission:自定义权限控制
 
 use-permission：权限控制
-
 
 activity保存
 系统回收当前activity之前会调用onSaveInstanceState&oncreate onrestoreinstancestate；back&home两个键不会调用此方法
