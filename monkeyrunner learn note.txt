@@ -1,0 +1,73 @@
+uiautomatorviewer.bat
+可以使用来查看activity中的元素ID等
+
+adb logcat 可以用看查看app的运行动作的,activity名等
+
+ex. python
+#coding:UTF-8
+from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice, MonkeyImage 
+
+device = MonkeyRunner.waitForConnection(1.0,'4b13125f') =>adb devices 可以得到该数据, 超时时间，设备ID
+
+如果默认只有一个设备，可以不带参数MonkeyRunner.waitForConnection()
+
+if device: 
+     print("Connect device successful!") 
+else:
+     print("Connect device failed!")
+
+device.removePackage('com.cundong.izhihu') => aapt dump badging your.apk 得到包名及Activity名
+MonkeyRunner.sleep(2)
+device.installPackage('E:/android apk release/iZhihuPaper-agent.apk')
+MonkeyRunner.sleep(2)
+device.startActivity(component="com.cundong.izhihu/com.cundong.izhihu.activity.MainActivity")
+device.startActivity(component="com.cundong.izhihu/.activity.MainActivity") =>另一种方式
+
+MonkeyRunner.sleep(2)
+
+count = 0
+while (count < 1):
+	print 'The count is:', count
+	device.touch(440,349,'DOWN_AND_UP')
+	MonkeyRunner.sleep(5)
+	device.drag((400,855),(400,-593),0.1,10)
+	MonkeyRunner.sleep(5)
+	device.press('KEYCODE_BACK',MonkeyDevice.DOWN_AND_UP)
+	MonkeyRunner.sleep(5)
+	device.touch(540,549,'DOWN_AND_UP')
+	count = count + 1
+
+print "Good bye!"	
+
+result = device.takeSnapshot()//截图
+result.writeToFile('E:\\JAVA\\monkeyrunner\\Test1\\Test1_003.png','png')
+
+#device.type('字符串')
+device.type('Findyou')
+
+#锁屏后,屏幕关闭，可以用下命令唤醒
+device.wake()
+
+#重启手机
+device.reboot()
+
+#执行一个adb shell命令，并返回结果，如果有的话
+device.shell("am force-stop com.cundong.izhihu")
+
+KeyCode: 
+home键 KEYCODE_HOME 
+back键 KEYCODE_BACK 
+send键 KEYCODE_CALL 
+end键 KEYCODE_ENDCALL 
+上导航键 KEYCODE_DPAD_UP 
+下导航键 KEYCODE_DPAD_DOWN 
+左导航 KEYCODE_DPAD_LEFT 
+右导航键 KEYCODE_DPAD_RIGHT  
+ok键 KEYCODE_DPAD_CENTER 
+上音量键 KEYCODE_VOLUME_UP  
+下音量键 KEYCODE_VOLUME_DOWN 
+power键 KEYCODE_POWER 
+camera键 KEYCODE_CAMERA 
+menu键 KEYCODE_MENU
+更多KeyCode http://developer.android.com/reference/android/view/KeyEvent.html
+
