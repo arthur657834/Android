@@ -1,2 +1,97 @@
-U2FsdGVkX1/s4rn+9PEcuYdte/7X7jNfo8b7glgdpfmvR1C/RJLrSJ/4OcMVnMtk
-sy7cyPLr5yc=
+-ANR：Application Not Responding
+ -1.界面操作等待响应时间超过5s
+ -2.handlemessage 回调函数中执行超过10s
+ -
+ -Force close
+ -
+ -abd shell
+ -
+ -package一般存放在data下。日志文件一般在data/log
+ -log文件组成
+ -1.系统基本信息
+ -2.事件信息
+ -3.虚拟机信息 dalvik thread
+ -
+ -monkey -p packagename -v 1550
+ -
+ -读取类名
+ -private static final string TAG=indexactivity.class.getname();
+ -
+ -Log.v("v","Verbose");
+ -Log.d("d","Debug");
+ -Log.i("i","Info");
+ -Log.w("w","Warn");
+ -Log.e("e","Error");
+ -
+ -proguard:混淆代码
+ -
+ -Android启动过程：
+ -
+ -1.linux启动
+ -	bootloader
+ -	kernel
+ -	
+ -2.Android启动
+ -	/system/bin/servicemanager   ->servicemanager.java
+ -	Runtime
+ -	Zygote->app_process/App_main  ->app_main.cpp -> zygoteinit.java systemserver.java
+ -	start VM
+ -	System server
+ -	start android service->register to serviceManager
+ -	start launcher
+ -
+ -3.应用程序启动
+ -	running packagemanager
+ -
+ -	launcher 比 action_boot_completed 先启动
+ -	
+ -android 5个进程等级
+ -
+ -1.foreground process
+ -	1.处于Activity resume()状态
+ -	2.处于与bound服务交互状态
+ -	3.处于服务在前台运行的状态(startForground()被调用)    前台放歌
+ -	4.Service 生命周期函数正在被执行(onCreat(),onStart(),onDestroy())
+ -	5.BroadcastReceiver 正在执行onReceive()
+ -	杀死foreground process需要用户响应-->所以安全等级高
+ -
+ -2.Visible Process
+ -Activity 不在前端显示，但并没有完全隐藏,例对话框
+ -一个bound到isible或者forground的Activity的service
+ -
+ -3.Service Process
+ -
+ -4.Background process
+ -
+ -5.Empty process
+ -没有components,缓存需要
+ -
+ -android四大组件：
+ -1.Activity 2.service 3.broadcast receiver 4.content provider
+ -
+ -定义instrumentation 做自动化测试用的
+ -
+ -mainfest的解析过程
+ -1.系统启动时packagemanagement读取mainfest的信息
+ -2.应用程序启动时，launcher 进行系统级判断
+ -3.4大组建需要时实例化
+ -
+ -Activity实际继承于context
+ -
+ -binder:跨IO操作  Android进程之间通信基础 C/S架构
+ -
+ -raw:音频资源
+ -anim：动画资源
+ -
+ -permission:自定义权限控制
+ -
+ -use-permission：权限控制
+ -
+ -activity保存
+ -系统回收当前activity之前会调用onSaveInstanceState&oncreate onrestoreinstancestate；back&home两个键不会调用此方法
+ -1.forground->background
+ -
+ -activity+lifecycle+preference来完成保存 onpuse onresume
+ -1.横竖屏切换
+ -2.home or back
+ -

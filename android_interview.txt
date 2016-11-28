@@ -1,2 +1,15 @@
-U2FsdGVkX19lthe2JPvNsWxk+nwcZd1gAsvADfIGtOxwt48pALgYVPu5+tDhse1I
-Jl0pLUkdxac=
+-面试题：
+ -
+ -1.Android为什么没有main函数
+ -2.Android程序是如何启动退出的
+ -3.activity是Android的显示视图吗？
+ -4.activity window view 三者什么关系
+ -5.layoutinflater是做什么的
+ -6.layoutinflater flater()是做什么的
+ -
+ -
+ -1、网络请求怎么样和UI线程交互？
+ -看具体的需求，不把实际场景说清楚，那就扯了。不过AsynTask确实不好用。
+ -
+ - 2、Activity1打开Activity2，那么Activity2怎么通知Activity1更新数据？
+ -用观察者模式，实现一个单例的监听类，统一管理需要同步的数据集，在oncreate中注册一个相应的监听，在ondestroy中取消监听。
