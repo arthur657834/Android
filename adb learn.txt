@@ -5,7 +5,8 @@
  -
  -adb shell service list
  -	查看后台服务列表
- -
+ -adb shell service check phone
+ -adb shell service call phone 2 s16 "10086"
  -adb shell cat /data/misc/wifi/*.conf
  -	查看wifi配置
  -	
@@ -96,9 +97,14 @@
  -
  -adb get-product 
  -adb get-serialno
+ -adb shell getprop ro.build.version.release
+ -adb shell getprop ro.build.version.sdk
+ -adb shell getprop ro.serialno
+ -adb shell getprop ro.carrier
+ -adb shell getprop ro.hardware
+ -adb shell getprop ro.bootloader
  -adb jdwp 查看指定的设施的可用的JDWP信息(Java Debug Wire Protocol Transport Interface)
- -
- -	
- -	
- -	
- -
+
+	
+	
+	
