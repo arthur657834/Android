@@ -36,6 +36,12 @@ session配置：
 'autoAcceptAlerts': True,
 'noReset':True,  ==> 不重复安装app
 
+capabilities 参数对照
+http://appium.io/slate/en/master/?ruby#appium-server-capabilities
+
+keycode:
+http://developer.android.com/reference/android/view/KeyEvent.html
+
 查看元素2种办法：
 uiautomatorviewer monitor(其实也是调用的是uiautomatorviewer)
 
