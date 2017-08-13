@@ -44,7 +44,7 @@ http://developer.android.com/reference/android/view/KeyEvent.html
 
 查看元素2种办法：
 uiautomatorviewer monitor(其实也是调用的是uiautomatorviewer)
-![uiautomator](uiautomator.png)
+![uiautomator] (uiautomator.png)
 
 错误：
 uiautomatorviewer Unable to connect to adb.Check if adb is installed correctly
