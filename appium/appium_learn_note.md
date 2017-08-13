@@ -46,6 +46,12 @@ http://developer.android.com/reference/android/view/KeyEvent.html
 uiautomatorviewer monitor(其实也是调用的是uiautomatorviewer)
 ![uiautomator](uiautomator.png)
 
+![chrome](mobile_remote_debug.png) "chrome debug"
+
+![uiautomatorviewer](uiautomatorviewer.png)
+
+![monitor](monitor.png)
+
 错误：
 uiautomatorviewer Unable to connect to adb.Check if adb is installed correctly
 
