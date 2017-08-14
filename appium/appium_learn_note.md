@@ -47,7 +47,7 @@ uiautomatorviewer monitor(其实也是调用的是uiautomatorviewer)
 ![uiautomator](uiautomator.png)
 
 在地址栏输入chrome://inspect，进入调试模式
-![chrome](mobile_remote_debug.png) "chrome debug"
+![chrome](mobile_remote_debug.png)
 
 ![uiautomatorviewer](uiautomatorviewer.png)
 
