@@ -21,7 +21,7 @@
  -
  -adb install apk, 安装应用，覆盖安装是使用 -r 选项
  -adb uninstall , 卸载应用，后面跟的参数是应用的包名，请区别于 apk 文件名
- -
+ - shell pm uninstall -k 包名 保留缓存的卸载
  -adb logcat
  -adb bugreport:打印dumpsys、dumpstate、logcat的输出
  -
