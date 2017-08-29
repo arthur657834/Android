@@ -24,7 +24,8 @@
  - shell pm uninstall -k 包名 保留缓存的卸载
  -adb logcat
  -adb bugreport:打印dumpsys、dumpstate、logcat的输出
- -
+ adb shell dumpsys battery/wifi/power/telephony.registry/window
+ -   shell getprop gsm.operator.alpha
  -adb pull sdcard/pull.txt d:\
  -adb push d:\push.txt sdcard/
  -
