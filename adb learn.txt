@@ -30,6 +30,7 @@
  -adb bugreport:打印dumpsys、dumpstate、logcat的输出
  adb shell dumpsys battery/wifi/power/telephony.registry/window
  -   shell getprop gsm.operator.alpha
+            gsm.network.type
  -adb pull sdcard/pull.txt d:\
  -adb push d:\push.txt sdcard/
  -
@@ -109,6 +110,33 @@
  -adb shell getprop ro.hardware
  -adb shell getprop ro.bootloader
  -adb jdwp 查看指定的设施的可用的JDWP信息(Java Debug Wire Protocol Transport Interface)
+
+
+gsm call 138888
+sms 1388 ji,hhh
+
+network status/speed
+window scale 0.5
+
+android create avd --name ljtest --target 2 --abi armeabi-v7a
+        listen avd
+
+
+monkey命令：
+dispatchpointer  向指定坐标发送命令
+dispatchtrackball 跟踪球消息
+dispatchkey
+dispatchflip
+dispatchactivity
+
+launchactivity
+
+
+monkey_recorder.py 录制
+monkey_playback.py
+
+robotium
+uiautomator
 
 	
 	
