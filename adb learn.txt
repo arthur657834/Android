@@ -1,3 +1,7 @@
+/system/build.prop
+手机型号
+
+
 -adb reboot bootloader
  -	进入刷机模式
  -adb reboot recovery
