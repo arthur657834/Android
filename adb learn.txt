@@ -138,6 +138,27 @@ monkey_playback.py
 robotium
 uiautomator
 
+性能
+负载
+压力
+配置
+并发
+容量
+可靠性
+失败
+
+耗电
+网络流量
+资源消耗
+响应时间
+帧率
+
+traceview
+systrace
+emmagee
+
+adb shell dumpsysgfxinfo
+
 	
 	
 	
